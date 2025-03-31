@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h1 class="text-center mb-4">Inscription</h1>
+
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-success">{{ message }}</div>
+			{% endfor %}
+		{% endfor %}
+
+		{{ form_start(form, {'attr': {'data-turbo': 'false'}}) }}
+
+		{% for field in form %}
+			<div class="mb-3">
+				{{ form_label(field) }}
+				{{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+				{{ form_errors(field) }}
+			</div>
+		{% endfor %}
+
+		<div class="text-center">
+			<button class="btn btn-primary">Valider</button>
+		</div>
+
+		{{ form_end(form) }}
+	</div>
+{% endblock %}
